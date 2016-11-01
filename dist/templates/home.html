@@ -1,2 +1,8 @@
 <h1>Taut</h1>
-<h3>Gettin' chatty with it</h3>
+<h2>Gettin' chatty with it</h2>
+<h3>{{ main.channelheader }}</h3>
+<ul ng-repeat="channel in main.channels">
+    <li>
+        {{channel.title}}
+    </li>
+</ul>
