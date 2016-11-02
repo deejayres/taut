@@ -15,6 +15,6 @@
     }
 
     angular
-        .module('taut', ['ui.router', 'firebase'])
+        .module('taut', ['ui.router', 'firebase', 'ui.bootstrap'])
         .config(config);
 })();

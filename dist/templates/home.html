@@ -1,8 +1,9 @@
 <h1>Taut</h1>
 <h2>Gettin' chatty with it</h2>
 <h3>{{ main.channelheader }}</h3>
+<button ng-click="main.open()">New Channel</button>
 <ul ng-repeat="channel in main.channels">
     <li>
-        {{channel.title}}
+        {{channel.name}}
     </li>
 </ul>
