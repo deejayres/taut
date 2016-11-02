@@ -1,6 +1,6 @@
 {
   "name": "taut",
-  "version": "0.1",
+  "version": "0.0.1",
   "description": "a channel-based chat app built with AngularJS",
   "repository": {
     "type": "git",
