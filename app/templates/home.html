@@ -2,8 +2,16 @@
 <h2>Gettin' chatty with it</h2>
 <h3>{{ main.channelheader }}</h3>
 <button ng-click="main.open()">New Channel</button>
-<ul ng-repeat="channel in main.channels">
-    <li>
-        {{channel.name}}
-    </li>
-</ul>
+<aside>
+    <ul ng-repeat="channel in main.channels.all">
+        <li ng-click="main.channels.setActiveChannel(channel)">
+            {{channel.name}}
+        </li>
+    </ul>
+</aside>
+
+<section>
+    <div ng-repeat="message in main.messages.channelMessages">
+        {{ message.content }}
+    </div>
+</section>
