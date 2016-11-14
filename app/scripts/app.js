@@ -14,7 +14,21 @@
             });
     }
 
+    function tautCookies($cookies, $uibModal) {
+        var currentUser = $cookies.get('username');
+        if (!currentUser || currentUser === '') {
+            $uibModal.open({
+                backdrop: 'static',
+                keyboard: false,
+                templateUrl: "/templates/setuser.html",
+                controller: 'SetUserModalCtrl',
+                controllerAs: 'modal'
+            });
+        }
+    }
+
     angular
-        .module('taut', ['ui.router', 'firebase', 'ui.bootstrap'])
-        .config(config);
+        .module('taut', ['ui.router', 'firebase', 'ui.bootstrap', 'ngCookies'])
+        .config(config)
+        .run(['$cookies', '$uibModal', tautCookies]);
 })();
