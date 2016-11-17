@@ -10,8 +10,15 @@
     </ul>
 </aside>
 
-<section>
+<section ng-show="main.channels.activeChannel">
     <div ng-repeat="message in main.messages.channelMessages">
         {{ message.content }}
+    </div>
+        <form ng-submit="main.messages.send(main.messages.newMessage, main.channels.activeChannel.$id)">
+            <input type="text" ng-model="main.messages.newMessage" ng-submit="main.messages.send(main.messages.newMessage, main.channels.activeChannel.$id)"/>
+            <button class="btn btn-primary" type="submit">Send</button>
+        </form>
+    <div>
+
     </div>
 </section>
