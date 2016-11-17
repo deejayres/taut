@@ -1,21 +1,20 @@
 <h1>Taut</h1>
 <h2>Gettin' chatty with it</h2>
-<h3>{{ main.channelheader }}</h3>
-<button ng-click="main.open()">New Channel</button>
+<button ng-click="main.openChannelModal()">New Channel</button>
 <aside>
-    <ul ng-repeat="channel in main.channels.all">
-        <li ng-click="main.channels.setActiveChannel(channel)">
+    <ul ng-repeat="channel in main.channels">
+        <li ng-click="main.setActiveChannel(channel)">
             {{channel.name}}
         </li>
     </ul>
 </aside>
 
-<section ng-show="main.channels.activeChannel">
-    <div ng-repeat="message in main.messages.channelMessages">
+<section ng-show="main.activeChannel">
+    <div ng-repeat="message in main.messages">
         {{ message.content }}
     </div>
-        <form ng-submit="main.messages.send(main.messages.newMessage, main.channels.activeChannel.$id)">
-            <input type="text" ng-model="main.messages.newMessage" ng-submit="main.messages.send(main.messages.newMessage, main.channels.activeChannel.$id)"/>
+        <form ng-submit="main.sendMessage(main.newMessage, main.activeChannel.$id)">
+            <input type="text" ng-model="main.newMessage" ng-submit="main.sendMessage(main.newMessage, main.activeChannel.$id)"/>
             <button class="btn btn-primary" type="submit">Send</button>
         </form>
     <div>

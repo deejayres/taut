@@ -1,10 +1,9 @@
 (function() {
     function MainCtrl($uibModal, Channels, Messages) {
-        this.channels = Channels;
-        this.channelheader = "Channels";
-        this.messages = Messages;
+        var ctrl = this;
+        ctrl.channels = Channels.all;
 
-        this.open = function() {
+        ctrl.openChannelModal = function() {
             $uibModal.open({
                 templateUrl: '/templates/newchannel.html',
                 controller: 'NewChannelModalCtrl',
@@ -13,6 +12,17 @@
             });
         };
 
+        ctrl.setActiveChannel = function(channel) {
+            ctrl.activeChannel = channel;
+            ctrl.messages = Messages.getByChannelID(channel.$id);
+        };
+
+        ctrl.newMessage = "";
+        
+        ctrl.sendMessage = function(content, channelID) {
+            Messages.sendMessage(content, channelID);
+            ctrl.newMessage = "";
+        };
     }
 
     angular
