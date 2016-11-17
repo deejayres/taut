@@ -1,5 +1,5 @@
 (function() {
-    function Messages($firebaseArray) {
+    function Messages($firebaseArray, $cookies) {
         var Messages = {};
         var ref = firebase.database().ref().child("messages");
 
@@ -12,9 +12,20 @@
             Messages.channelMessages = $firebaseArray(query);
         };
 
+        //API function that adds messages to Firebase
+        Messages.send = function(content, channelID) {
+            Messages.channelMessages.$add({
+                content: content,
+                sentAt: Date.now(),
+                channelID: channelID,
+                username: $cookies.get('username')
+            });
+            Messages.newMessage = "";
+        };
+
         return Messages;
     }
     angular
         .module('taut')
-        .factory('Messages', ['$firebaseArray', Messages]);
+        .factory('Messages', ['$firebaseArray', '$cookies', Messages]);
 })();
