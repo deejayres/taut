@@ -1,0 +1,73 @@
+.container {
+    max-width: 900px;
+}
+
+.aside {
+    background-color: #2F3E4E;
+    color: #ACB1B7;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.glyphicon-plus-sign {
+    vertical-align: -1px;
+    cursor: pointer;
+}
+
+.channel-listing:hover {
+    background-color: #3F4B5B;
+    cursor: pointer;
+}
+
+.message-display {
+    background-color: #FFFFFF;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.modal-content {
+    padding-bottom: 10px;
+}
+
+.message {
+    padding: 4px;
+}
+.message:hover {
+  background-color: #F9F9F9;
+}
+
+.message-user {
+  font-size: 16px;
+  font-weight: bold;
+  display: inline-block;
+  color: #3F4B5B;
+}
+
+.time {
+  font-weight: lighter;
+}
+
+@media only screen and (min-width : 768px) {
+    .row.is-flex {
+        display: flex;
+        flex-wrap: wrap;
+        margin-bottom: 20px;
+    }
+    .row.is-flex > [class*='col-'] {
+        display: flex;
+        flex-direction: column;
+    }
+    .aside {
+        border-top-left-radius: 10px;
+        border-bottom-left-radius: 10px;
+        border-top: 1px solid black;
+        border-left: 1px solid black;
+        border-bottom: 1px solid black;
+    }
+
+    .message-display {
+        border-top-right-radius: 10px;
+        border-bottom-right-radius: 10px;
+        border: 1px solid black;
+    }
+}
