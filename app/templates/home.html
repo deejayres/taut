@@ -1,23 +1,30 @@
-<h1>Taut</h1>
-<h2>Gettin' chatty with it</h2>
-<button ng-click="main.openChannelModal()">New Channel</button>
-<aside>
-    <ul ng-repeat="channel in main.channels">
-        <li ng-click="main.setActiveChannel(channel)">
-            {{channel.name}}
-        </li>
-    </ul>
-</aside>
+<div class="container">
+    <h1>Taut</h1>
+    <div class="row is-flex">
+        <div class="col-sm-2 aside">
+            <h4>Channels <span title="Create a channel" class="glyphicon glyphicon-plus-sign" ng-click="main.openChannelModal()"></span></h4>
+            <div ng-repeat="channel in main.channels" ng-click ="main.setActiveChannel(channel)" class="channel-listing">
+                #{{channel.name}}
+            </div>
+        </div>
 
-<section ng-show="main.activeChannel">
-    <div ng-repeat="message in main.messages">
-        {{ message.content }}
+        <div class="col-sm-10 message-display">
+            <section ng-show="main.activeChannel">
+                <h4>#{{main.activeChannel.name}}</h4>
+                <div ng-repeat="message in main.messages" class="message">
+                    <div class="message-user">{{ message.username }} </div>
+                    <small class="time">  {{ message.sentAt | date: 'MMM d h:mm a' }}</small><br />
+                    {{ message.content }}
+                </div>
+                <form class="message-input" ng-submit="main.sendMessage(main.newMessage, main.activeChannel.$id)">
+                    <div class= "input-group">
+                        <input class="form-control" type="text" ng-model="main.newMessage" ng-submit="main.sendMessage(main.newMessage, main.activeChannel.$id)"/>
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" type="submit">Send</button>
+                        </span>
+                    </div>
+                </form>
+            </section>
+        </div>
     </div>
-        <form ng-submit="main.sendMessage(main.newMessage, main.activeChannel.$id)">
-            <input type="text" ng-model="main.newMessage" ng-submit="main.sendMessage(main.newMessage, main.activeChannel.$id)"/>
-            <button class="btn btn-primary" type="submit">Send</button>
-        </form>
-    <div>
-
-    </div>
-</section>
+</div>
